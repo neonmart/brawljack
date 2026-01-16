@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Gemini Blackjack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              felt: '#35654d',
+              'felt-dark': '#2a503d',
+              gold: '#ffd700',
+              'wine-deep': '#1f0515',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            animation: {
+              'deal': 'deal 0.3s ease-out forwards',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'float-up': 'floatUp 1.5s ease-out infinite',
+              'poison-pulse': 'poisonPulse 3s ease-in-out infinite',
+              'boom': 'boom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+            },
+            keyframes: {
+              deal: {
+                '0%': { transform: 'translateY(-100px) scale(0.5)', opacity: '0' },
+                '100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              floatUp: {
+                '0%': { transform: 'translateY(20px) scale(0.5)', opacity: '0' },
+                '20%': { opacity: '0.8' },
+                '100%': { transform: 'translateY(-60px) scale(1.2)', opacity: '0' },
+              },
+              poisonPulse: {
+                '0%, 100%': { backgroundColor: 'rgba(88, 28, 135, 0)' },
+                '50%': { backgroundColor: 'rgba(88, 28, 135, 0.3)' },
+              },
+              boom: {
+                '0%': { transform: 'scale(0.1)', opacity: '0' },
+                '50%': { transform: 'scale(1.5)', opacity: '1' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #orientation-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: #1a1a1a;
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+      }
+      /* Detect landscape on mobile/small devices */
+      @media screen and (orientation: landscape) and (max-height: 500px) {
+        #orientation-overlay {
+          display: flex;
+        }
+        #root {
+          display: none;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="orientation-overlay">
+      <div class="flex flex-col items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-4 animate-bounce">
+          <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+          <path d="M12 18h.01"/>
+        </svg>
+        <h2 class="text-2xl font-black text-gold uppercase tracking-tighter mb-2 font-serif">GIRA EL DISPOSITIVO</h2>
+        <p class="text-gray-400 font-sans max-w-[250px]">Brawljack está optimizado para jugarse en modo vertical.</p>
+      </div>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>

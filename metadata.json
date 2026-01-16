@@ -1,0 +1,6 @@
+{
+  "name": "BRAWLJACK",
+  "description": "Una batalla de Blackjack RPG. Empiezas con 40 de salud. El daño se basa en la diferencia de puntuación. Derrota al Oponente.",
+  "requestFramePermissions": [],
+  "orientation": "portrait"
+}
